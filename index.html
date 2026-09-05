@@ -3,19 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的测试网站</title>
+    <title>我的小站</title>
+    <style>
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            background: #101418;
+            color: #d9e0e5;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                "Segoe UI", "Microsoft YaHei", sans-serif;
+            line-height: 1.8;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 8%;
+            background: rgba(16,20,24,.75);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,.06);
+            z-index: 100;
+        }
+        .logo { font-size: 18px; font-weight: 600; letter-spacing: 2px; }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            font-size: 14px;
+            color: #9da8b0;
+        }
+        .nav-links a { transition: color .25s; }
+        .nav-links a:hover { color: #dce8ee; }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 1000px;
+            margin: auto;
+            padding: 120px 30px 80px;
+        }
+        .tag {
+            color: #91a9b7;
+            font-size: 14px;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(42px, 8vw, 86px);
+            line-height: 1.1;
+            font-weight: 700;
+            background: linear-gradient(120deg, #e5edf1, #7f96a3);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .hero p {
+            max-width: 600px;
+            margin-top: 28px;
+            color: #89949c;
+            font-size: 17px;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 28px;
+            padding: 10px 22px;
+            width: fit-content;
+            border: 1px solid #53646f;
+            border-radius: 8px;
+            color: #dce5e9;
+            transition: background .25s, transform .25s;
+        }
+        .button:hover {
+            background: rgba(255,255,255,.07);
+            transform: translateY(-2px);
+        }
+
+        section {
+            max-width: 1000px;
+            margin: auto;
+            padding: 100px 30px;
+        }
+        .section-title { margin-bottom: 45px; }
+        .section-title small { color: #73838d; letter-spacing: 3px; }
+        .section-title h2 {
+            margin: 8px 0 0;
+            font-size: 34px;
+            font-weight: 600;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+        .card {
+            padding: 28px;
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,.045),
+                rgba(255,255,255,.015)
+            );
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 14px;
+            transition: transform .25s, border-color .25s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(160,190,205,.35);
+        }
+        .card h3 { margin-top: 0; font-size: 19px; }
+        .card p { color: #89949c; font-size: 14px; }
+
+        .timeline {
+            border-left: 1px solid #39464e;
+            padding-left: 28px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 35px;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            width: 9px;
+            height: 9px;
+            background: #8da5b2;
+            border-radius: 50%;
+            left: -33px;
+            top: 10px;
+        }
+        .timeline-item h3 { margin: 0; }
+        .timeline-item span { font-size: 13px; color: #68767e; }
+        .timeline-item p { color: #89949c; }
+
+        footer {
+            padding: 50px 30px;
+            text-align: center;
+            color: #59656c;
+            font-size: 13px;
+            border-top: 1px solid rgba(255,255,255,.05);
+        }
+
+        @media (max-width: 600px) {
+            nav { padding: 14px 20px; }
+            .nav-links { gap: 12px; font-size: 12px; }
+            .hero, section { padding-left: 22px; padding-right: 22px; }
+            .hero h1 { font-size: 48px; }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello GitHub! 👋</h1>
-    <p>这个网页是从 Termux 推上来的。</p>
+    <nav>
+        <div class="logo">MY SITE</div>
+        <div class="nav-links">
+            <a href="#about">关于</a>
+            <a href="#things">兴趣</a>
+            <a href="#timeline">记录</a>
+        </div>
+    </nav>
 
-    <h2>坤周乐趣</h2>
-    <p>玩roblox，还是玩roblox</p>
+    <main>
+        <div class="hero">
+            <div class="tag">WELCOME</div>
+            <h1>一个安静的小角落。</h1>
+            <p>
+                这里记录一些想法、技术折腾、
+                阅读，以及偶尔发生的奇奇怪怪的事情。
+            </p>
+            <a class="button" href="#about">继续看看 ↓</a>
+        </div>
 
+        <section id="about">
+            <div class="section-title">
+                <small>ABOUT</small>
+                <h2>关于这个网站</h2>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <h3>🖥 技术</h3>
+                    <p>Linux、Git、编程，以及各种“这个东西到底能不能跑”的实验。</p>
+                </div>
+                <div class="card">
+                    <h3>📚 阅读</h3>
+                    <p>小说、漫画、推理故事，还有一些值得慢慢看的东西。</p>
+                </div>
+                <div class="card">
+                    <h3>🎨 兴趣</h3>
+                    <p>绘画、音乐、动画，以及一些不太容易归类的小爱好。</p>
+                </div>
+            </div>
+        </section>
 
-    <a href="about.html">关于</a>
+        <section id="things">
+            <div class="section-title">
+                <small>INTERESTS</small>
+                <h2>最近在折腾什么</h2>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <h3>Git</h3>
+                    <p>用 Git 管理代码和笔记，顺便研究一下版本控制到底有多神奇。</p>
+                </div>
+                <div class="card">
+                    <h3>Web</h3>
+                    <p>从一个 index.html 开始，慢慢把这个小网站搭起来。</p>
+                </div>
+                <div class="card">
+                    <h3>日常记录</h3>
+                    <p>把一些平时容易忘记的东西记录下来。</p>
+                </div>
+            </div>
+        </section>
 
+        <section id="timeline">
+            <div class="section-title">
+                <small>LOG</small>
+                <h2>一些记录</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span>2026</span>
+                    <h3>网站上线</h3>
+                    <p>第一次把自己写的网页部署到互联网。</p>
+                </div>
+                <div class="timeline-item">
+                    <span>2026</span>
+                    <h3>开始使用 Git</h3>
+                    <p>从“文件夹里乱放东西”逐渐进化到使用版本控制。</p>
+                </div>
+                <div class="timeline-item">
+                    <span>NOW</span>
+                    <h3>未完待续……</h3>
+                    <p>网站还在慢慢长大。</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-
+    <footer>
+        © 2026 My Little Site<br>
+        Built with HTML &amp; CSS.
+    </footer>
 </body>
 </html>
